@@ -15,7 +15,7 @@
       <td>{{ item.name }}</td>
       <td>{{ item.position }}</td>
       <td>{{ item.office }}</td>
-      <td>{{ item.salary }}</td>
+      <td>{{ item.salary | currency:'USD':'symbol':'4.0-0' }}</td>
       <td class="flex">
         <button
           class="btn btn-success"
