@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
     this.employeeService.getEmployees()
     .subscribe(employees =>{
       this.employees = employees
+      console.log(this.employees);
     });
   }
 

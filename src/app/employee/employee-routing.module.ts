@@ -8,6 +8,10 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'edit',
+    component: HomeComponent
+  },
+  {
     path: '**',
     redirectTo: ''
   }
