@@ -11,7 +11,7 @@
     </div>
     <div class="col col-md-6">
       <div class="table-responsive">
-        <app-card [employees]="employees"></app-card>
+        <app-card [employees]="employees" (onDelete)="delete($event)"></app-card>
       </div>
     </div>
   </div>

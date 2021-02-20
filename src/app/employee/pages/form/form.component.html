@@ -64,9 +64,5 @@
     Add
   </button>
   <button type="submit" class="btn btn-success m-2" [disabled]="myForm.invalid" *ngIf="visibility" (click)="update()">Update</button>
-  <button type="button" class="btn btn-success m-2" routerLink="/employee/" *ngIf="visibility">Go back</button>
+  <button type="button" class="btn btn-secondary m-2" routerLink="/employee/" *ngIf="visibility">Go back</button>
 </form>
-
-<pre>{{ myForm.value | json }}</pre>
-
-<pre>{{ myForm.valid }}</pre>

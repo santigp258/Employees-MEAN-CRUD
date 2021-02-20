@@ -1,22 +1,37 @@
 <table class="table table-hover table-dark">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Position</th>
-        <th scope="col">Office</th>
-        <th scope="col">Salary</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of employees; let i = index">
-        <th scope="row">{{ i + 1 }}</th>
-        <td>{{ item.name }}</td>
-        <td>{{ item.position }}</td>
-        <td>{{ item.office }}</td>
-        <td>{{ item.salary }}</td>
-        <td class="flex"><button class="btn btn-success" type="button" (click)="edit(item._id)"  [routerLink]="['/employee/edit', item._id]"><i class="fas fa-edit"></i></button> <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button></td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Position</th>
+      <th scope="col">Office</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of employees; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>{{ item.name }}</td>
+      <td>{{ item.position }}</td>
+      <td>{{ item.office }}</td>
+      <td>{{ item.salary }}</td>
+      <td class="flex">
+        <button
+          class="btn btn-success"
+          type="button"
+          [routerLink]="['/employee/edit', item._id]"
+        >
+          <i class="fas fa-edit"></i>
+        </button>
+        <button
+          class="btn btn-danger"
+          type="button"
+          (click)="delete(item._id, item.name)"
+        >
+          <i class="fas fa-trash-alt"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

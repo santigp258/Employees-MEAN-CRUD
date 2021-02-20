@@ -4,6 +4,7 @@ import { Employee } from '../../interfaces/employee.interface';
 import { Router, ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -33,9 +34,10 @@ export class HomeComponent implements OnInit {
     //update employee
    if(this.router.url.includes('edit')){
     this.activatedRoute.params.pipe(
-      switchMap(({id})=> this.employeeService.updateEmployee(id, event))
+      switchMap(({_id})=> this.employeeService.updateEmployee(_id, event))
     ).subscribe(
       resp =>{
+        Swal.fire(`Updated successfully!`, '', 'success')
         this.getEmployee();
       }
     )
@@ -44,9 +46,23 @@ export class HomeComponent implements OnInit {
     this.employeeService.saveEmployee(event)
     .subscribe(
       res =>{
+        Swal.fire(`Saved successfully!`, '', 'success')
         this.getEmployee();
       }
     );
    }
+  }
+
+
+  delete(id: string){
+    this.employeeService.deleteEmployee(id)
+    .subscribe(
+      res =>{
+        this.getEmployee();
+        if(this.router.url.includes(id)){
+          this.router.navigate(['/employee'])
+        }
+      }
+    );
   }
 }

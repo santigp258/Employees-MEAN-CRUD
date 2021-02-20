@@ -25,4 +25,8 @@ export class EmployeeService {
   updateEmployee(id:string, body: Employee){
     return this.http.put(`/api/employees/${id}`, body);
   }
+
+  deleteEmployee(id: string){
+    return this.http.delete(`/api/employees/${id}`);
+  }
 }
