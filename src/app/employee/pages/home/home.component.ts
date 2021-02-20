@@ -27,4 +27,12 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  save(event: Employee){
+    this.employeeService.saveEmployee(event)
+    .subscribe(
+      res =>{
+        this.getEmployee();
+      }
+    );
+  }
 }

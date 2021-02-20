@@ -13,4 +13,7 @@ export class EmployeeService {
     return this.http.get<Employee[]>(`/api/employees`)
   }
 
+  saveEmployee(body: Employee){
+    return this.http.post(`/api/employees`, body);
+  }
 }
