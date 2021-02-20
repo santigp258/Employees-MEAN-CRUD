@@ -6,12 +6,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { FormComponent } from './pages/form/form.component';
 import { CardComponent } from './pages/card/card.component';
 
-
 @NgModule({
   declarations: [HomeComponent, FormComponent, CardComponent],
-  imports: [
-    CommonModule,
-    EmployeeRoutingModule
-  ]
+  imports: [CommonModule, EmployeeRoutingModule],
 })
-export class EmployeeModule { }
+export class EmployeeModule {}
