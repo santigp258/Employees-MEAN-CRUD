@@ -13,7 +13,16 @@ export class EmployeeService {
     return this.http.get<Employee[]>(`/api/employees`)
   }
 
+  getEmployeeById(id: string): Observable<Employee>{
+    return this.http.get<Employee>(`/api/employees/${id}`);
+  }
+
   saveEmployee(body: Employee){
     return this.http.post(`/api/employees`, body);
+  }
+
+
+  updateEmployee(id:string, body: Employee){
+    return this.http.put(`/api/employees/${id}`, body);
   }
 }

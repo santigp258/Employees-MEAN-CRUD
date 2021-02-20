@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../interfaces/employee.interface';
+import { Router, ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   employees: Employee[] = [];
 
-  constructor(private employeeService: EmployeeService) { 
+  constructor(private employeeService: EmployeeService, private router: Router, private activatedRoute: ActivatedRoute) { 
     this.getEmployee();
   }
 
@@ -22,17 +24,29 @@ export class HomeComponent implements OnInit {
   getEmployee(){
     this.employeeService.getEmployees()
     .subscribe(employees =>{
+      //show employees
       this.employees = employees
-      console.log(this.employees);
     });
   }
 
   save(event: Employee){
+    //update employee
+   if(this.router.url.includes('edit')){
+    this.activatedRoute.params.pipe(
+      switchMap(({id})=> this.employeeService.updateEmployee(id, event))
+    ).subscribe(
+      resp =>{
+        this.getEmployee();
+      }
+    )
+   }else{
+     //save employee
     this.employeeService.saveEmployee(event)
     .subscribe(
       res =>{
         this.getEmployee();
       }
     );
+   }
   }
 }
