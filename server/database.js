@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const URI = "mongodb://localhost/mean-crud";
+const URI = process.env.DB_CNN;
 
 mongoose
   .connect(URI, { useNewUrlParser: true, useUnifiedTopology: true,  useCreateIndex: true })
